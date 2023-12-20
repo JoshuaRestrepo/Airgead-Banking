@@ -1,0 +1,37 @@
+/*
+ * mainApp.cpp
+ *
+ *  Created on: Dec 1, 2023
+ *  Author: Joshua Restrepo
+ */
+#include <iostream>
+#include <iomanip>
+#include "BankClass.h"
+using namespace std;
+
+
+int main() {
+    float initInv, monDep, AnuInt, months, years;
+
+
+    BankClass bankclass;
+    bankclass.printDisplay();
+    cout << "Press any key to continue....";
+    cin.ignore();
+
+    bankclass.getValues(&initInv, &monDep,&AnuInt,&months,&years);
+    months = years * 12;
+
+    cout << "Press any key to continue....";
+    cin.ignore();
+
+    bankclass.displayTableOne(initInv,monDep,AnuInt,months,years);
+
+    cout << "Press any key to continue....";
+    cin.ignore();
+
+    bankclass.displayTableTwo(initInv,monDep,AnuInt,months,years);
+
+    return 0;
+}
+

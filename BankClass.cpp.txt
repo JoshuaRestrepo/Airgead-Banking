@@ -1,0 +1,124 @@
+/*
+ * BankClass.cpp
+ *
+ *  Created on: Dec 1, 2023
+ *      Author: Joshua Restrepo
+ */
+
+#include <iostream>
+#include <iomanip>
+using namespace std;
+#include "BankClass.h"
+
+BankClass::BankClass() {
+	// TODO Auto-generated constructor stub
+
+}
+
+BankClass::~BankClass() {
+	// TODO Auto-generated destructor stub
+}
+
+/**
+ *Display menu/required items
+ */
+void BankClass::printDisplay(){
+
+		cout << "************\n";
+	    cout << "**** Data Input ****\n";
+	    cout << "Initial Investment Amount: \n";
+	    cout << "Monthly Deposit: \n";
+	    cout << "Annual Interest: \n";
+	    cout << "Number of years: \n";
+
+}
+
+/**
+ *Get required input from user
+ */
+void BankClass::getValues(float *initInv, float *monDep,float *AnuInt, float *months, float *years){
+
+		float temp;
+		cout << "************\n";
+	    cout << "**** Data Input ****\n";
+	    cout << "Initial Investment Amount: $";
+	    cin >> temp;
+	    *initInv = temp;
+	    cout << "Monthly Deposit: $";
+	    cin >> temp;
+	    *monDep = temp;
+	    cout << "Annual Interest: %";
+	    cin >> temp;
+	    *AnuInt = temp;
+	    cout << "Number of years: ";
+	    cin >> temp;
+	    *years = temp;
+
+}
+
+/**
+ *Display the first table
+ */
+void BankClass::displayTableOne(float initInv, float monDep,float AnuInt, float months, float years){
+
+		float totalAm, intAmt;
+
+		totalAm = initInv;
+
+		cout << "\nBalance and Interest Without Additional Monthly Deposits\n";
+	    cout << "==============================================================\n";
+	    cout << "Year\t\tYear End Balance\tYear End Earned Interest\n";
+	    cout << "--------------------------------------------------------------\n";
+	    for (int i = 0; i < years; i++) {
+	        intAmt = (totalAm) * ((AnuInt / 100));
+	        totalAm = totalAm + intAmt;
+	        //cout << (i + 1) << "\t\t$" << fixed << setprecision(2) << totalAm << "\t\t\t$" << intAmt << "\n";
+	        			cout << fixed;
+	        	        cout << setprecision(2);
+	        			cout << (i + 1);
+	        	        cout.width(25);
+	        	        cout<<"$"<<totalAm;
+	        	        cout.width(25);
+	        	        cout<<"$"<<intAmt;
+	        	        cout<<endl;
+	    }
+
+
+
+}
+
+/**
+ *Display the second table
+ */
+void BankClass::displayTableTwo(float initInv, float monDep,float AnuInt, float months, float years){
+
+	    float totalAm, intAmt, yearTotInt;
+
+	    totalAm = initInv;
+
+
+	    cout << "\n\nBalance and Interest With Additional Monthly Deposits\n";
+	    cout << "==============================================================\n";
+	    cout << "Year\t\tYear End Balance\tYear End Earned Interest\n";
+	    cout << "--------------------------------------------------------------\n";
+	    for (int i = 0; i < years; i++) {
+	        yearTotInt = 0;
+	        for (int j = 0; j < 12; j++) {
+	            intAmt = (totalAm + monDep) * ((AnuInt / 100) / 12);
+	            yearTotInt = yearTotInt + intAmt;
+	            totalAm = totalAm + monDep + intAmt;
+	        }
+
+	        cout << fixed;
+	        cout << setprecision(2);
+	        cout << (i + 1);
+	        cout.width(25);
+	        setprecision(2);
+	        cout<<"$"<<totalAm;
+
+	        cout.width(25);
+	        cout<<"$"<<yearTotInt;
+	        cout<<endl;
+	    }
+
+}

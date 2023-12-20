@@ -1,0 +1,28 @@
+/*
+ * BankClass.h
+ *
+ *  Created on: Dec 1, 2023
+ *      Author: Joshua Restrepo
+ */
+
+#ifndef BANKCLASS_H_
+#define BANKCLASS_H_
+
+class BankClass {
+public:
+	BankClass();
+	virtual ~BankClass();
+	//print details on screen
+		void printDisplay();
+
+		//get user input
+		void getValues(float *initInv, float *monDep,float *AnuInt, float *months, float *years);
+
+		//print table one
+		void displayTableOne(float initInv, float monDep,float AnuInt, float months, float years);
+
+		//print second table
+		void displayTableTwo(float initInv, float monDep,float AnuInt, float months, float years);
+};
+
+#endif /* BANKCLASS_H_ */
